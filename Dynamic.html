@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<style type='text/css'>
+		.Normal {
+			font-family: Arial;
+			color: blue
+		}
+
+		.Selected {
+			font-family: Georgia;
+			font-size: larger;
+			color: green;
+		}
+	</style>
+	<title> Changing Styles Dynamically</title>
+	<script language="JavaScript">
+		function ChangeStyles(event) {
+			var ThisElement = document.getElementById(
+				event.currentTarget.id);
+
+			if (event.type == "mouseover") {
+				ThisElement.setAttribute("class", "Selected")
+			}
+			else {
+				ThisElement.setAttribute("class", "Normal")
+			}
+		}
+
+	</script>
+
+</head>
+
+<body>
+	<h1 id="Header" class="Normal">Formatting the Style Tag Directly</h1>
+	<p id="P1" class="Normal">Some text to format.</p>
+	<p id="P2" class="Normal">Some more text to format.</p>
+
+	<script language="JavaScript">
+		var ElementList = document.getElementsByTagName("p");
+
+		for (var i = 0; i < ElementList.length; i++){
+			ElementList[i].onmouseover=ChangeStyles;
+			ElementList[i].onmouseout=ChangeStyles;
+		}
+	</script>
+</body>
+
+</html>
